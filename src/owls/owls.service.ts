@@ -24,9 +24,14 @@ export class OwlsService {
         const dom = new JSDOM(`<!DOCTYPE html><body></body>`);
         let body = d3.select(dom.window.document.querySelector('body'));
         let svg = this.getCanvas(body, options);
+
+        // this.appendBackground(svg, options);
         this.appendBody(svg, options);
+        // this.appendBelly(svg, options);
+        // this.appendWings(svg, options);
         this.appendEyes(svg, options);
         this.appendBeak(svg, options);
+        // this.appendFeet(svg, options);
 
         return body.html();
     }
@@ -41,9 +46,9 @@ export class OwlsService {
         const dom = new JSDOM(`<!DOCTYPE html><body></body>`);
         let body = d3.select(dom.window.document.querySelector('body'));
         let svg = this.getCanvas(body, owlData);
-        this.appendBody(svg, owlData);
-        this.appendEyes(svg, owlData);
-        this.appendBeak(svg, owlData);
+        // this.appendBody(svg, owlData);
+        // this.appendEyes(svg, owlData);
+        // this.appendBeak(svg, owlData);
 
         return body.html();
     }
@@ -56,31 +61,41 @@ export class OwlsService {
             .attr('xmlns', 'http://www.w3.org/2000/svg');
     }
 
-    appendBody(svg, owlData) {
+
+    /**
+     * Append owl body
+     */
+    appendBody(svg, options: OwlOptions) {
         svg.append('circle')
-            .attr('cx', owlData.sizeX / 2)
-            .attr('cy', owlData.sizeY / 2)
-            .attr('r', owlData.sizeX * 0.4)
-            .style('fill', 'brown');
+            .attr('cx', options.sizeX / 2)
+            .attr('cy', options.sizeY / 2)
+            .attr('r', options.sizeX * 0.45)
+            .style(
+                'fill',
+                options &&
+                    options.backgroundColor &&
+                    options.backgroundColor !== 'standard'
+                    ? options.backgroundColor
+                    : 'brown',
+            );
     }
 
-    appendEyes(svg, owlData) {
-        const eyeRadius = owlData.sizeX * 0.15;
+    appendEyes(svg, options: OwlOptions) {
+        const eyeRadius = options.sizeX * 0.15;
         svg.append('circle')
-            .attr('cx', owlData.sizeX / 2 - eyeRadius * 1.1)
-            .attr('cy', owlData.sizeY / 2 - eyeRadius)
+            .attr('cx', options.sizeX / 2 - eyeRadius * 1.1)
+            .attr('cy', options.sizeY / 2 - eyeRadius)
             .attr('r', eyeRadius)
             .style('fill', 'yellow');
         svg.append('circle')
-            .attr('cx', owlData.sizeX / 2 + eyeRadius * 1.1)
-            .attr('cy', owlData.sizeY / 2 - eyeRadius)
+            .attr('cx', options.sizeX / 2 + eyeRadius * 1.1)
+            .attr('cy', options.sizeY / 2 - eyeRadius)
             .attr('r', eyeRadius)
             .style('fill', 'yellow');
     }
 
     appendBeak(svg, owlData) {
         const beak = d3.symbol().type(d3.symbolTriangle);
-        //.size(100);
         svg.append('path')
             .attr('d', beak)
             .attr('transform', function (d) {
@@ -91,7 +106,7 @@ export class OwlsService {
                     owlData.sizeY / 2 +
                     '),' +
                     'rotate(180),' +
-                    'scale(5)'
+                    'scale(3)'
                 );
             })
             .style('fill', 'orange');
