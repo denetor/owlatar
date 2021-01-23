@@ -1,10 +1,36 @@
 import { Injectable } from '@nestjs/common';
+import { OwlOptions } from './owl-options';
 const d3 = require('d3');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
 @Injectable()
 export class OwlsService {
+    /**
+     * Given the size and an optionsCode, generates the options instance used to generate the avatar
+     */
+    getOptions(size: number, optionsCode: string): OwlOptions {
+        const options = new OwlOptions();
+        options.sizeX = size;
+        options.sizeY = size;
+
+        return options;
+    }
+
+    /**
+     * Generate an avatar given an options object
+     */
+    generate(options: OwlOptions) {
+        const dom = new JSDOM(`<!DOCTYPE html><body></body>`);
+        let body = d3.select(dom.window.document.querySelector('body'));
+        let svg = this.getCanvas(body, options);
+        this.appendBody(svg, options);
+        this.appendEyes(svg, options);
+        this.appendBeak(svg, options);
+
+        return body.html();
+    }
+
     // https://medium.com/@92sharmasaurabh/generate-svg-files-using-nodejs-d3-647d5b4f56eb
     // https://stackoverflow.com/questions/9948350/how-to-use-d3-in-node-js-properly
     test() {
