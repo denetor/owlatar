@@ -8,15 +8,15 @@ import {options} from 'tsconfig-paths/lib/options';
 export class OwlsController {
     constructor(private readonly owlsService: OwlsService) {}
 
-    @Get('test.svg')
-    testSvg(@Res() res) {
-        if (!res.headers) {
-            res.headers = {};
-        }
-        res.headers['Content-Type'] = 'image/svg+xml';
-        res.headers['Content-Disposition'] = 'attachment; filename=test.svg';
-        res.end(this.owlsService.test());
-    }
+    // @Get('test.svg')
+    // testSvg(@Res() res) {
+    //     if (!res.headers) {
+    //         res.headers = {};
+    //     }
+    //     res.headers['Content-Type'] = 'image/svg+xml';
+    //     res.headers['Content-Disposition'] = 'attachment; filename=test.svg';
+    //     res.end(this.owlsService.test());
+    // }
 
     @Get(':size/img-:optionsCode.svg')
     @ApiOperation({
