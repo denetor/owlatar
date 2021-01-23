@@ -10,7 +10,7 @@ export class OwlsService {
      * Given the size and an optionsCode, generates the options instance used to generate the avatar
      */
     getOptions(size: number, optionsCode: string): OwlOptions {
-        const options = new OwlOptions();
+        const options = new OwlOptions(optionsCode);
         options.sizeX = size;
         options.sizeY = size;
 

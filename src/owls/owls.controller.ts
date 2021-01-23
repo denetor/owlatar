@@ -18,7 +18,8 @@ export class OwlsController {
         res.end(this.owlsService.test());
     }
 
-    @Get(':size/:optionsCode')
+
+    @Get(':size/img-:optionsCode.svg')
     @ApiOperation({
         description: 'Generate an avatar given its size and a parameter string',
     })
