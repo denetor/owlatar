@@ -3,7 +3,7 @@ import { OwlsService } from './owls.service';
 import { OwlsController } from './owls.controller';
 
 @Module({
-  providers: [OwlsService],
-  controllers: [OwlsController]
+    providers: [OwlsService],
+    controllers: [OwlsController],
 })
 export class OwlsModule {}

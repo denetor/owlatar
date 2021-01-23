@@ -23,7 +23,8 @@ export class OwlsService {
     }
 
     getCanvas(body, owlData) {
-        return body.append('svg')
+        return body
+            .append('svg')
             .attr('width', owlData.sizeX)
             .attr('height', owlData.sizeY)
             .attr('xmlns', 'http://www.w3.org/2000/svg');
@@ -52,16 +53,20 @@ export class OwlsService {
     }
 
     appendBeak(svg, owlData) {
-        const beak = d3
-            .symbol()
-            .type(d3.symbolTriangle);
-            //.size(100);
+        const beak = d3.symbol().type(d3.symbolTriangle);
+        //.size(100);
         svg.append('path')
             .attr('d', beak)
-            .attr('transform', function(d) {
-                return 'translate(' + owlData.sizeX / 2 + ', ' + owlData.sizeY / 2 + '),' +
+            .attr('transform', function (d) {
+                return (
+                    'translate(' +
+                    owlData.sizeX / 2 +
+                    ', ' +
+                    owlData.sizeY / 2 +
+                    '),' +
                     'rotate(180),' +
-                    'scale(5)';
+                    'scale(5)'
+                );
             })
             .style('fill', 'orange');
     }
