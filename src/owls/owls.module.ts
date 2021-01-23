@@ -1,6 +1,6 @@
-import { Module } from '@nestjs/common';
-import { OwlsService } from './owls.service';
-import { OwlsController } from './owls.controller';
+import {Module} from '@nestjs/common';
+import {OwlsService} from './owls.service';
+import {OwlsController} from './owls.controller';
 
 @Module({
     providers: [OwlsService],

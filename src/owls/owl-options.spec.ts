@@ -1,4 +1,4 @@
-import { OwlOptions } from './owl-options';
+import {OwlOptions} from './owl-options';
 
 describe('OwlOptions', () => {
     it('should be defined', () => {

@@ -1,5 +1,9 @@
 {
-  "singleQuote": true,
-  "trailingComma": "all",
-  "tabWidth": 4
+    "printWidth": 127,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "tabWidth": 4,
+    "useTabs": false,
+    "bracketSpacing": false,
+    "endOfLine": "auto"
 }

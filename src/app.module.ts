@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { OwlsModule } from './owls/owls.module';
+import {Module} from '@nestjs/common';
+import {AppController} from './app.controller';
+import {AppService} from './app.service';
+import {OwlsModule} from './owls/owls.module';
 
 @Module({
     imports: [OwlsModule],

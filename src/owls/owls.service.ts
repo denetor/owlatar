@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
-import { OwlOptions } from './owl-options';
+import {Injectable} from '@nestjs/common';
+import {OwlOptions} from './owl-options';
 const d3 = require('d3');
 const jsdom = require('jsdom');
-const { JSDOM } = jsdom;
+const {JSDOM} = jsdom;
 
 @Injectable()
 export class OwlsService {
@@ -61,7 +61,6 @@ export class OwlsService {
             .attr('xmlns', 'http://www.w3.org/2000/svg');
     }
 
-
     /**
      * Append owl body
      */
@@ -72,9 +71,7 @@ export class OwlsService {
             .attr('r', options.sizeX * 0.45)
             .style(
                 'fill',
-                options &&
-                    options.backgroundColor &&
-                    options.backgroundColor !== 'standard'
+                options && options.backgroundColor && options.backgroundColor !== 'standard'
                     ? options.backgroundColor
                     : 'brown',
             );
@@ -99,15 +96,7 @@ export class OwlsService {
         svg.append('path')
             .attr('d', beak)
             .attr('transform', function (d) {
-                return (
-                    'translate(' +
-                    owlData.sizeX / 2 +
-                    ', ' +
-                    owlData.sizeY / 2 +
-                    '),' +
-                    'rotate(180),' +
-                    'scale(3)'
-                );
+                return 'translate(' + owlData.sizeX / 2 + ', ' + owlData.sizeY / 2 + '),' + 'rotate(180),' + 'scale(3)';
             })
             .style('fill', 'orange');
     }

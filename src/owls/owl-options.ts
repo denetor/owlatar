@@ -1,4 +1,4 @@
-import { options } from "tsconfig-paths/lib/options";
+import {options} from 'tsconfig-paths/lib/options';
 
 export class OwlOptions {
     sizeX: number;
@@ -6,7 +6,7 @@ export class OwlOptions {
     backgroundColor: string = 'standard'; // [standard|transparent|<rgb>]
     backgroundPattern: string = 'standard';
     bodyColor: string = 'standard';
-    bodyAspect: number = 1.0;               // default round body
+    bodyAspect: number = 1.0; // default round body
     eyesColor: string = 'standard';
     eyesStyle: string = 'standard';
     wingsColor: string = 'standard';
