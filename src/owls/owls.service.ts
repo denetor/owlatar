@@ -25,24 +25,24 @@ export class OwlsService {
         const body = dom.window.document.querySelector('body');
         const svg = this.getEmptySvg(dom, options);
         const background = this.getBackground(dom, options);
+        const owlBrows = this.getOwlBrows(dom, options);
         const owlBody = this.getOwlBody(dom, options);
         const owlBelly = this.getOwlBelly(dom, options);
         const owlFeet = this.getOwlFeet(dom, options);
         const owlWings = this.getOwlWings(dom, options);
         const owlBeak = this.getOwlBeak(dom, options);
         const owlEyes = this.getOwlEyes(dom, options);
-        // const owlEyes = this.getOwlBrows(dom, options);
 
         if (options && options.backgroundColor && options.backgroundColor !== 'transparent') {
             svg.appendChild(background);
         }
+        svg.appendChild(owlBrows);
         svg.appendChild(owlBody);
         svg.appendChild(owlBelly);
         svg.appendChild(owlFeet);
         svg.appendChild(owlWings);
         svg.appendChild(owlBeak);
         svg.appendChild(owlEyes);
-        // svg.appendChild(owlBrows);
         body.appendChild(svg);
 
         return body.outerHTML;
@@ -68,6 +68,32 @@ export class OwlsService {
         bg.setAttribute('height', options.sizeY + 'px');
         bg.setAttribute('fill', 'rgb(200,200,200)');
         return bg;
+    }
+
+
+    getOwlBrows(dom, options: OwlOptions) {
+        const g = dom.window.document.createElement('g');
+        g.setAttribute('id', 'owlBrows');
+        const lb = dom.window.document.createElement('path');
+        lb.setAttribute('d',
+            'M' + (options.sizeX / 2 - options.sizeX * 0.35) + ',' + (options.sizeY / 2 - options.sizeY * 0.25) +
+            'L' + (options.sizeX / 2 - options.sizeX * 0.35) + ',' + (options.sizeY / 2 - options.sizeY * 0.45) +
+            'L' + (options.sizeX / 2 - options.sizeX * 0.10) + ',' + (options.sizeY / 2 - options.sizeY * 0.25) +
+            'Z'
+        );
+        lb.setAttribute('fill', 'rgb(100,60,20)');
+        const rb = dom.window.document.createElement('path');
+        rb.setAttribute('d',
+            'M' + (options.sizeX / 2 + options.sizeX * 0.35) + ',' + (options.sizeY / 2 - options.sizeY * 0.25) +
+            'L' + (options.sizeX / 2 + options.sizeX * 0.35) + ',' + (options.sizeY / 2 - options.sizeY * 0.45) +
+            'L' + (options.sizeX / 2 + options.sizeX * 0.10) + ',' + (options.sizeY / 2 - options.sizeY * 0.25) +
+            'Z'
+        );
+        rb.setAttribute('fill', 'rgb(100,60,20)');
+        g.appendChild(lb);
+        g.appendChild(rb);
+
+        return g;
     }
 
 
