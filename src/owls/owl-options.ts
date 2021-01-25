@@ -17,6 +17,9 @@ export class OwlOptions {
     bellyPattern: string = 'standard';
     feetColor: string = 'standard';
     feetPattern: string = 'standard';
+    browsColor: string = 'standard';
+    browsPattern: string = 'standard';
+    accessories: string[] = [];         // ['glasses', 'papillon', 'monocular', ...]
 
     constructor(optionsCode: string) {
         //
